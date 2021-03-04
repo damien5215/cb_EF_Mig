@@ -13,7 +13,7 @@ namespace ComicBookGalleryModel.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202103041702321_Initial"; }
+            get { return "202103041720465_Initial"; }
         }
         
         string IMigrationMetadata.Source
