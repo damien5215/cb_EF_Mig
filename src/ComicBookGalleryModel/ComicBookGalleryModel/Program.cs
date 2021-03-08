@@ -23,7 +23,7 @@ namespace ComicBookGalleryModel
 
                     var artistRoleNames = comicBook.Artists.Select(a => $"{a.Artist.Name} - {a.Role.Name}").ToList();
                     var artistRolesDisplayText = string.Join(", ", artistRoleNames);
-                    Console.WriteLine("By: {0}", artistRolesDisplayText);
+                    Console.WriteLine("By: {0}" + "\n", artistRolesDisplayText);
                 }
 
                 Console.ReadLine();

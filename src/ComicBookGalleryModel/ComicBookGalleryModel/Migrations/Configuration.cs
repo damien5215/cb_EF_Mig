@@ -11,7 +11,6 @@ namespace ComicBookGalleryModel.Migrations
         {
             AutomaticMigrationsEnabled = false;
         }
-
         protected override void Seed(ComicBookGalleryModel.Data.Context context)
         {
             const int roleIdScript = 1;
@@ -24,7 +23,6 @@ namespace ComicBookGalleryModel.Migrations
             );
 
 #if DEBUG
-
             const int artistIdStanLee = 1;
             const int artistIdSteveDitko = 2;
 
