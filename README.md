@@ -1,5 +1,15 @@
 # dotnet-ef-migrations
 
+https://teamtreehouse.com/library/entity-framework-migrations
+
+In this Treehouse course, I learned how to use Entity Framework Code First Migrations to propagate data model changes to a database.
+
+1. Enabling Migrations
+2. Adding Migrations
+3. Updating the Database
+4. Modifying Migrations
+5. Deploying Migrations
+
 ----------------------------------------------------------------
 
 NOTES (Treehouse)
