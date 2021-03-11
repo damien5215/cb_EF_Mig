@@ -71,8 +71,13 @@
     <Compile Include="Migrations\202103081653228_AddBioToArtist.Designer.cs">
       <DependentUpon>202103081653228_AddBioToArtist.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103112212103_AddCBAREntity.cs" />
+    <Compile Include="Migrations\202103112212103_AddCBAREntity.Designer.cs">
+      <DependentUpon>202103112212103_AddCBAREntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Artist.cs" />
+    <Compile Include="Models\CBAverageRating.cs" />
     <Compile Include="Models\ComicBook.cs" />
     <Compile Include="Models\ComicBookArtist.cs" />
     <Compile Include="Models\Role.cs" />
@@ -90,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103081653228_AddBioToArtist.resx">
       <DependentUpon>202103081653228_AddBioToArtist.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103112212103_AddCBAREntity.resx">
+      <DependentUpon>202103112212103_AddCBAREntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
