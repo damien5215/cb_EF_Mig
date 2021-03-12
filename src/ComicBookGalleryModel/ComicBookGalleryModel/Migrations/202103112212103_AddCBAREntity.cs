@@ -19,6 +19,14 @@ namespace ComicBookGalleryModel.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.ComicBook", t => t.ComicBookId, cascadeDelete: true)
                 .Index(t => t.ComicBookId);
+
+            // Populate CBAverageRating Table
+            Sql(
+                @"
+                insert into CBAverageRating
+                select Id, AverageRating, getdate() from ComicBook 
+                where AverageRating is not null
+                ");
             
             DropColumn("dbo.ComicBook", "AverageRating");
         }
@@ -26,6 +34,20 @@ namespace ComicBookGalleryModel.Migrations
         public override void Down()
         {
             AddColumn("dbo.ComicBook", "AverageRating", c => c.Decimal(precision: 5, scale: 2));
+
+            // Populate ComicBook.AverageRating Table
+            Sql(@"
+                update cb
+                set cb.AverageRating = cbar.AverageRating
+                from ComicBook cb
+                cross apply (
+                    select top 1 AverageRating, Date
+                    from CBAverageRating 
+                    where ComicBookId = cb.Id
+                    order by Date desc
+                ) as cbar
+            ");
+
             DropForeignKey("dbo.CBAverageRating", "ComicBookId", "dbo.ComicBook");
             DropIndex("dbo.CBAverageRating", new[] { "ComicBookId" });
             DropTable("dbo.CBAverageRating");
