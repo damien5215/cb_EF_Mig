@@ -70,6 +70,70 @@ You can think of the Up method as being responsible for "upgrading" the database
 
 ----------------------------------------------------------------
 
+The "-TargetMigration" flag can be used with the Update-Database command to update the database to a specific migration. Updating the database to a previous migration is useful when you're testing or debugging migrations.
+
+Running the command Update-Database -TargetMigration $InitialDatabase will remove all of the applied migrations and restore the database to its original initial state. TRUE.
+
+Restoring the database to its original initial state is useful when you need to test applying all of your migrations.
+
+The Migration Fluent API provides a method named "Sql" that can be used to execute a SQL statement as part of the migration. The Sql method gives you a lot of power and flexibility when you need to customize a migration.
+
+
+An option for applying pending migrations to databases hosted in shared environments, is to configure EF to use the "MigrateDatabaseTolatestVersion" database initializer.
+
+While using the database initializer to migrate the database to the latest migration is easy to do and works well with automated workflows, it's not always possible to use.
+
+While there are many development, testing, and deployment workflow variations, most contain some semblance of the dev, test, and prod environments. TRUE.
+
+You can add a migration at any time, even when you have pending migrations that need to be applied to the database. FALSE. Attempting to add a migration when you have a pending migration will result in an error.
+
+The "-Script" flag can be combined with the Update-Database command to generate a SQL script that can be used to apply the migration to the database.
+
+Generating SQL scripts is helpful when you don't have direct access to test and production environment databases or the servers that they're hosted on.
+
+When changing the cardinality of data in your model, Code First Migrations isn't able to generate the code that is necessary to transform existing data in your database into the new model. TRUE. You'll need to manually update the generated migration to workaround this limitation.
+
+Running the command Update-Database -Script -SourceMigration $InitialDatabase will generate an idempotent SQL script that can be used to safely upgrade a database currently at any version to the latest version.
+
+ An idempotent script can be safely executed against any version of the database, as it contains logic to determine which migrations have been applied and which haven't.
+
+The MigrationHistory table's "MigrationId" column contains values that match the migration code filenames. This makes the rows in the MigrationHistory table easy to identify.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
